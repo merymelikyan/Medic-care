@@ -117,7 +117,7 @@ class Timeline2(models.Model):
         verbose_name = "Timeline2"
         verbose_name_plural = "Timeline2"    
 
-
+ 
 class Patients(models.Model):
     reviews_class1  = models.CharField(max_length=400, blank=True, null=True)
     reviews_class2  = models.CharField(max_length=400, blank=True, null=True)
@@ -156,7 +156,7 @@ class OpeningHours(models.Model):
 
 class OurClinic(models.Model):
     title = models.CharField(max_length=50)
-    url = models.CharField(max_length=255, blank=True)
+    url = models.URLField(max_length=255, blank=True)
     name_url = models.CharField(max_length=250, blank=True, null=True)
     address = models.CharField(max_length=250, blank=True, null=True)
     

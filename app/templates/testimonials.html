@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}    
+  
+  
+  {% block testimonials_template %}
+    <section class="section-padding pb-0" id="reviews">
+      <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="text-center mb-lg-5 mb-4">{{header_text.2.tag}}</h2>
+              <div class="owl-carousel reviews-carousel">
+                  {% for patients in patients %}
+                      <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                          <div class="reviews-stars">
+                              <i class="{{patients.reviews_class1}}"></i>
+                              <i class="{{patients.reviews_class2}}"></i>
+                              <i class="{{patients.reviews_class3}}"></i>
+                              <i class="{{patients.reviews_class4}}"></i>
+                              <i class="{{patients.reviews_class5}}"></i>
+                          </div> 
+
+                          <p class="text-primary d-block mt-2 mb-0 w-100"><strong>{{patients.description1}}</strong></p>
+
+                          <p class="reviews-text w-100">{{patients.description2}}</p>
+
+                          <img src="{{patients.image.url}}" class="img-fluid reviews-image" alt="">
+
+                          <figcaption class="ms-4">
+                              <strong>{{patients.name}}</strong>
+
+                              <span class="text-muted">{{patients.position}}</span>
+                          </figcaption>
+                      </figure>
+                  {% endfor %}
+
+              </div>
+            </div>
+
+          </div>
+      </div>
+    </section>
+  {% endblock %}

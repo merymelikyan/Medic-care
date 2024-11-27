@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% load static %}
+
+      {% block home_template %}
+            <section class="hero" id="hero">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                            
+                                    <div class="carousel-item active">
+                                    <img src="{{slider.0.img.url}}" class="img-fluid" alt="">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="{{slider.1.img.url}}" class="img-fluid" alt="">
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="{{slider.2.img.url}}" class="img-fluid" alt="">
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="heroText d-flex flex-column justify-content-center">
+
+                                <h1 class="mt-auto mb-2">
+                                    {{animated_info.tag}}
+                                
+                                    <div class="animated-info">
+                                        <span class="animated-item">{{animated_info.title1}}</span>
+                                        <span class="animated-item">{{animated_info.title2}}</span>
+                                        <span class="animated-item">{{animated_info.title3}}</span>
+                                    </div>
+                                </h1>  
+
+                                <p class="mb-4">{{animated_info.description}}</p>
+
+                                <div class="heroLinks d-flex flex-wrap align-items-center">
+                                    <a class="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
+
+                                    <p class="contact-phone mb-0"><i class="bi-phone"></i> {{animated_info.phone}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" id="about">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <h2 class="mb-lg-3 mb-3">{{about.title}}</h2>
+
+                            <p>{{about.description1}}</p>
+
+                            <p>{{about.description2}}</p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 col-12 mx-auto">
+                            <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                                <p class="featured-text"><span class="featured-number">{{about.years}}</span> Years<br> {{about.text}} </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-6 ps-0">
+                            <img src="{{about.gallery_image1.url}}" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">
+                        </div>
+
+                        <div class="col-lg-6 col-6 pe-0">
+                            <img src="{{about.gallery_image2.url}}" class="img-fluid galleryImage" alt="wear a mask" title="wear a mask to protect yourself">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="timeline">
+                <div class="container">
+                    <div class="row">
+
+                        <h2 class="text-center mb-lg-5 mb-4">{{header_text.1.tag}}</h2>
+                        
+                        <div class="timeline">
+                            {% for timeline in timeline %}
+                            <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                                <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                    <h3 class=" text-light">{{timeline.title}}</h3>
+
+                                    <p>{{timeline.description}}</p>
+                                </div>
+
+                                <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                    <i class="{{timeline.icon_class}}"></i>
+                                </div>
+
+                                <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                    <time>{{timeline.data}}</time>
+                                </div>
+                            </div>
+                            {% endfor %}  
+                            
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding pb-0" id="reviews">
+                <div class="container">
+                    <div class="row">
+
+                      <div class="col-12">
+                          <h2 class="text-center mb-lg-5 mb-4">{{header_text.2.tag}}</h2>
+
+                          <div class="owl-carousel reviews-carousel">
+
+                              {% for patients in patients %}
+
+                                  <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                      <div class="reviews-stars">
+                                          <i class="{{patients.reviews_class1}}"></i>
+                                          <i class="{{patients.reviews_class2}}"></i>
+                                          <i class="{{patients.reviews_class3}}"></i>
+                                          <i class="{{patients.reviews_class4}}"></i>
+                                          <i class="{{patients.reviews_class5}}"></i>
+                                      </div> 
+
+                                      <p class="text-primary d-block mt-2 mb-0 w-100"><strong>{{patients.description1}}</strong></p>
+
+                                      <p class="reviews-text w-100">{{patients.description2}}</p>
+
+                                      <img src="{{patients.image.url}}" class="img-fluid reviews-image" alt="">
+
+                                      <figcaption class="ms-4">
+                                          <strong>{{patients.name}}</strong>
+
+                                          <span class="text-muted">{{patients.position}}</span>
+                                      </figcaption>
+                                  </figure>
+                              {% endfor %}
+
+                                  {% comment %} <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                      <div class="reviews-stars">
+                                          <i class="bi-star-fill"></i>
+                                          <i class="bi-star-fill"></i>
+                                          <i class="bi-star-fill"></i>
+                                          <i class="bi-star-fill"></i>
+                                          <i class="bi-star"></i>
+                                      </div>
+
+                                      <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Doctor cares everyone!</strong></p>
+
+                                      <p class="reviews-text w-100">Donec in elementum orci, nec posuere ligula. Quisque vulputate diam et ullamcorper ullamcorper. Pellentesque vestibulum neque at leo fermentum mattis.</p>
+
+                                      <img src="{% static "images/reviews/senior-man-wearing-white-face-mask-covid-19-campaign-with-design-space.jpeg" %}" class="img-fluid reviews-image" alt="">
+
+                                      <figcaption class="ms-4">
+                                          <strong>Ben Walker</strong>
+
+                                          <span class="text-muted">Recovered</span>
+                                      </figcaption>
+                                  </figure>
+                              
+                              <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                  <div class="reviews-stars">
+                                      <i class="bi-star-fill"></i>
+                                      <i class="bi-star-fill"></i>
+                                      <i class="bi-star-fill"></i>
+                                      <i class="bi-star-fill"></i>
+                                      <i class="bi-star-fill"></i>
+                                  </div>
+
+                                  <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Great services!</strong></p>
+
+                                  <p class="reviews-text w-100">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sit amet velit vitae purus aliquam efficitur.</p>
+
+                                  <img src="{% static "images/reviews/portrait-british-woman.jpeg" %}" class="img-fluid reviews-image" alt="">
+
+                                  <figcaption class="ms-4">
+                                      <strong>Laura Zono</strong>
+
+                                      <span class="text-muted">New Patient</span>
+                                  </figcaption>
+                              </figure>
+
+                              <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                                  <div class="reviews-stars">
+                                      <i class="bi-star-fill"></i>
+                                      <i class="bi-star-fill"></i>
+                                      <i class="bi-star-fill"></i>
+                                      <i class="bi-star"></i>
+                                      <i class="bi-star"></i>
+                                  </div>
+
+                                  <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Best Advices</strong></p>
+
+                                  <p class="reviews-text w-100">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+                                  <img src="{% static "images/reviews/woman-wearing-mask-face-closeup-covid-19-green-background.jpeg" %}" class="img-fluid reviews-image" alt="">
+
+                                  <figcaption class="ms-4">
+                                      <strong>Rosey</strong>
+
+                                      <span class="text-muted">Almost Recovered</span>
+                                  </figcaption>
+                              </figure> {% endcomment %}
+                              
+                          </div>
+                      </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-padding" id="booking">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="booking-form">
+                                
+                                <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
+                            
+                                <form role="form" action="#booking" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <input type="text" name="name" id="name" class="form-control" placeholder="Full name" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="telephone" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="Phone: 123-456-7890">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <input type="date" name="date" id="date" value="" class="form-control">
+                                            
+                                        </div>
+
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="5" id="message" name="content" placeholder="Additional Message"></textarea>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                                            <button type="submit" class="form-control" id="submit-button">Book Now</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    {% endblock %}    

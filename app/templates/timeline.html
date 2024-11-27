@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}    
+
+
+{% block timeline_template %}
+    <section class="section-padding pb-0" id="timeline">
+        <div class="container">
+            <div class="row">
+
+                <h2 class="text-center mb-lg-5 mb-4">{{header_text.1.tag}}</h2>
+                
+                <div class="timeline">
+                    {% for timeline in timeline %}
+                    <div class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                        <div class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                            <h3 class=" text-light">{{timeline.title}}</h3>
+
+                            <p>{{timeline.description}}</p>
+                        </div>
+
+                        <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                            <i class="{{timeline.icon_class}}"></i>
+                        </div>
+
+                        <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                            <time>{{timeline.data}}</time>
+                        </div>
+                    </div>
+                    {% endfor %}  
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
